@@ -2,6 +2,7 @@ package com.gestion.empleados.servicio;
 
 import java.util.List;
 
+import com.gestion.empleados.entidades.EmpleadoEmailSalario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -9,16 +10,16 @@ import com.gestion.empleados.entidades.Empleado;
 
 public interface EmpleadoService {
 
-	public List<Empleado> findAll();
+	List<Empleado> findAll();
 
-	public Page<Empleado> findAll(Pageable pageable);
+	Page<Empleado> findAll(Pageable pageable);
 
-	public void save(Empleado empleado);
+	void save(Empleado empleado);
 
-	public Empleado findOne(Long id);
+	Empleado findOne(Long id);
 
-	public void delete(Long id);
+	void delete(Long id);
 
-	List<String> findAllEmails();
+	List<EmpleadoEmailSalario> findAllEmailsAndSalaries();
 
 }

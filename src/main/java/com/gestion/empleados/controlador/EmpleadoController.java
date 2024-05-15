@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import com.gestion.empleados.entidades.EmpleadoEmailSalario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -152,7 +153,7 @@ public class EmpleadoController {
 	}
 
 	@GetMapping("/emails")
-	public List<String> getAllEmails() {
-		return empleadoService.findAllEmails();
+	public List<EmpleadoEmailSalario> getAllEmails() {
+		return empleadoService.findAllEmailsAndSalaries();
 	}
 }

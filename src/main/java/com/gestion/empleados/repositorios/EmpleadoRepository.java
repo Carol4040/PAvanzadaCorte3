@@ -8,6 +8,6 @@ import com.gestion.empleados.entidades.Empleado;
 import java.util.List;
 
 public interface EmpleadoRepository extends PagingAndSortingRepository<Empleado, Long>{
-    @Query("SELECT e.email FROM Empleado e")
-    List<String> findAllEmails();
+    @Query("SELECT e.email, e.salario FROM Empleado e")
+    List<Object[]> findAllEmailsAndSalaries();
 }

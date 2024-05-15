@@ -1,7 +1,9 @@
 package com.gestion.empleados.servicio;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.gestion.empleados.entidades.EmpleadoEmailSalario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -47,10 +49,11 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 		return empleadoRepository.findById(id).orElse(null);
 	}
 
-	@Override
-	@Transactional(readOnly = true)
-	public List<String> findAllEmails() {
-		return empleadoRepository.findAllEmails();
+	public List<EmpleadoEmailSalario> findAllEmailsAndSalaries() {
+		List<Object[]> results = empleadoRepository.findAllEmailsAndSalaries();
+		return results.stream()
+				.map(result -> new EmpleadoEmailSalario((String) result[0], (Double) result[1]))
+				.collect(Collectors.toList());
 	}
 
 }
