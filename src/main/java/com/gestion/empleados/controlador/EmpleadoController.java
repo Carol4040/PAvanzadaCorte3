@@ -150,4 +150,9 @@ public class EmpleadoController {
 		EmpleadoExporterExcel exporter = new EmpleadoExporterExcel(empleados);
 		exporter.exportar(response);
 	}
+
+	@GetMapping("/emails")
+	public List<String> getAllEmails() {
+		return empleadoService.findAllEmails();
+	}
 }

@@ -16,7 +16,7 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 
 	@Autowired
 	private EmpleadoRepository empleadoRepository;
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Empleado> findAll() {
@@ -46,5 +46,11 @@ public class EmpleadoServiceImpl implements EmpleadoService {
 	public Empleado findOne(Long id) {
 		return empleadoRepository.findById(id).orElse(null);
 	}
-	
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<String> findAllEmails() {
+		return empleadoRepository.findAllEmails();
+	}
+
 }

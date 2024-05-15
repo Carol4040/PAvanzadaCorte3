@@ -38,18 +38,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		return new InMemoryUserDetailsManager(usuario1,usuario2);
 	}
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		    .antMatchers("/").permitAll()
-		    .antMatchers("/form/*","/eliminar/*").hasRole("ADMIN")
-		    .anyRequest().authenticated()
-		    .and()
-		    .formLogin()
-		        .loginPage("/login")
-		        .permitAll()
-		    .and()
-		    .logout().permitAll();
+				.antMatchers("/").permitAll()
+				.antMatchers("/form/*", "/eliminar/*").hasRole("ADMIN")
+				.anyRequest().authenticated()
+				.and()
+				.formLogin()
+				.loginPage("/login")
+				.defaultSuccessUrl("/", true)
+				.permitAll()
+				.and()
+				.logout()
+				.permitAll();
 	}
 }

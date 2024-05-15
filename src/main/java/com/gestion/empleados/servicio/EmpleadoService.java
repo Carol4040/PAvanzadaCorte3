@@ -18,4 +18,7 @@ public interface EmpleadoService {
 	public Empleado findOne(Long id);
 
 	public void delete(Long id);
+
+	List<String> findAllEmails();
+
 }
